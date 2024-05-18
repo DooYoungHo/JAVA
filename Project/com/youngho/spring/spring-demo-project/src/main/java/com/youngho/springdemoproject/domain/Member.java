@@ -1,5 +1,6 @@
 package com.youngho.springdemoproject.domain;
 
+
 public class Member {
 
     private Long id;
