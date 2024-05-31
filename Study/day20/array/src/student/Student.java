@@ -1,25 +1,38 @@
 package student;
 
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 
 public class Student {
 
-    private String name;
-    private int[] listOfMarks;
+    private final String name;
+    private ArrayList<Integer> listOfMarks;
 
-    public Student(String name, int[] list) {
+    public Student(String name, int... list) {
         this.name = name;
-        this.listOfMarks = list;
+        listOfMarks = new ArrayList<>();
+
+        for (int num : list) {
+            listOfMarks.add(num);
+        }
     }
 
+    public void getListOfMarks() {
+        for (int list : listOfMarks)
+            System.out.println(list);
+    }
+
+    public String getName() { return name; }
+
     public int getNumberOfMarks() {
-        return listOfMarks.length;
+        return listOfMarks.size();
     }
 
     public int getTotalSumOfMarks() {
 
-        int totalSum = listOfMarks[0];
+        int totalSum = 0;
 
         for (int list : listOfMarks) {
             totalSum += list;
@@ -30,7 +43,7 @@ public class Student {
 
     public int getMaximumMark() {
 
-        int maxNum = listOfMarks[0];
+        int maxNum = 0;
 
         for (int list : listOfMarks) {
             if (list >= maxNum)
@@ -43,7 +56,6 @@ public class Student {
     public int getMinimumMark() {
         int minNum = 0;
 
-        // 0 1 2
         for (int list : listOfMarks) {
             if (minNum >= list)
                 minNum = list;
@@ -59,6 +71,18 @@ public class Student {
         BigDecimal sum = new BigDecimal(totalSum);
         BigDecimal num = new BigDecimal(numberOfMarks);
 
-        return sum.divide(num, 2, RoundingMode.HALF_UP);
+        return sum.divide(num, 1, RoundingMode.HALF_UP);
+    }
+
+    public void addNewMarks(int... num) {
+        for (int n : num)
+            listOfMarks.add(n);
+    }
+
+    public void removeIndexMarks(int num) {
+        if (num <= listOfMarks.size() - 1)
+            listOfMarks.remove(num);
+        else
+            System.out.println("Not used Index...");
     }
 }
