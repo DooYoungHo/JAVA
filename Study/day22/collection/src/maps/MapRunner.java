@@ -1,5 +1,7 @@
 package maps;
 
+import com.sun.source.tree.Tree;
+
 import java.util.*;
 
 public class MapRunner {
@@ -32,5 +34,15 @@ public class MapRunner {
         }
         System.out.println(occur);
 
+        NavigableMap<Integer, String> test = new TreeMap<>();
+
+        test.put(1,"A");
+        test.put(10,"A");
+        test.put(7,"C");
+        test.put(8,"Z");
+        test.put(2,"G");
+        test.put(4,"F");
+
+        System.out.println(test.higherEntry(1));
     }
 }
